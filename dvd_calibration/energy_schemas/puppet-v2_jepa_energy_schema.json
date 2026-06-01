@@ -1,0 +1,26 @@
+{
+  "schema_version": "2.0",
+  "phase": "dvd_calibration_puppet_v2",
+  "target_contract": "PuppetV2Pool",
+  "target_address": "0x0000000000000000000000000000000000000000",
+  "global_constants": {
+    "POOL_INITIAL_TOKENS": 1000000000000000000000000,
+    "SWAP_AMOUNT": 10000000000000000000000,
+    "POOL_ADDRESS": "0x0000000000000000000000000000000000000001",
+    "TOKEN_ADDRESS": "0x0000000000000000000000000000000000000002",
+    "WETH_ADDRESS": "0x0000000000000000000000000000000000000003",
+    "PAIR_ADDRESS": "0x0000000000000000000000000000000000000004",
+    "PLAYER_ETH_WEI": 20000000000000000000,
+    "PRICE": 1000000000000000000,
+    "router_denominator": 1000000000000000000000000
+  },
+  "energy_schemas": {
+    "DVD_PuppetV2_AMM_Oracle": {
+      "type": "relu_pool_drain",
+      "routing_flag": "AMM_ORACLE_MANIPULATION",
+      "description": "Uniswap V2 spot oracle manipulation — constant product x*y=k price crush",
+      "observables": ["reserveToken", "reserveWETH", "poolTokenBalance", "playerWETHDeposit"],
+      "invariant": "assertGt(pool_weth_balance, 0) — fracture when pool DVT balance reaches zero"
+    }
+  }
+}

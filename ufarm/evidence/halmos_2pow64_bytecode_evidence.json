@@ -1,0 +1,16 @@
+{
+  "artifact_path": "targets/web3/ufarm/out/UFarmSignalLagHalmos.t.sol/UFarmSignalLagHalmosTest.json",
+  "two_pow_64_decimal": 18446744073709551616,
+  "two_pow_64_hex": "0x10000000000000000",
+  "hex_present_in_bytecode": true,
+  "bytecode_length_chars": 1582,
+  "devdoc_excerpt": {
+    "kind": "dev",
+    "methods": {
+      "check_ArithmeticFriction(uint256)": {
+        "details": "False invariant: net profit <= 0 (equivalently assets_out <= deposit) after one +50 bps step."
+      }
+    },
+    "version": 1
+  }
+}

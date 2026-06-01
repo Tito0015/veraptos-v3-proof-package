@@ -1,0 +1,65 @@
+No files changed, compilation skipped
+
+Ran 2 tests for test/LocalVaultTest.t.sol:LocalVaultTest
+[PASS] testLocalFracture() (gas: 18709)
+Logs:
+  === UFarm Local Fracture Test - 2^64 Wei Boundary ===
+  2^64 wei constant found in bytecode: 18446744073709551616
+  Test input (within bounds): 500000000000000100000
+  Initial balance: 79228162514264337593543950335
+  Executing arithmetic friction for amount: 500000000000000100000
+  Shares calculated: 500000000000000100000
+  New supply: 100500000000000000100000
+  Total capital after deposit: 100500000000000000100000
+  Oracle drift (+50 bps): 502500000000000000500
+  NAV after drift: 101002500000000000100500
+  Assets out: 502500000000000100500
+  PROFIT EXTRACTED: 2500000000000000500 wei
+  Final balance: 79228162516764337593543950835
+  Extracted profit (wei): 2500000000000000500
+  SUCCESS: testLocalFracture extracted positive profit at 2^64 wei boundary
+
+Traces:
+  [18709] LocalVaultTest::testLocalFracture()
+    ├─ [0] console::log("=== UFarm Local Fracture Test - 2^64 Wei Boundary ===") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("2^64 wei constant found in bytecode:", 18446744073709551616 [1.844e19]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Test input (within bounds):", 500000000000000100000 [5e20]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Initial balance:", 79228162514264337593543950335 [7.922e28]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Executing arithmetic friction for amount:", 500000000000000100000 [5e20]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Shares calculated:", 500000000000000100000 [5e20]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("New supply:", 100500000000000000100000 [1.005e23]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Total capital after deposit:", 100500000000000000100000 [1.005e23]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Oracle drift (+50 bps):", 502500000000000000500 [5.025e20]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("NAV after drift:", 101002500000000000100500 [1.01e23]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Assets out:", 502500000000000100500 [5.025e20]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("PROFIT EXTRACTED:", 2500000000000000500 [2.5e18], "wei") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::deal(LocalVaultTest: [0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496], 79228162516764337593543950835 [7.922e28])
+    │   └─ ← [Return]
+    ├─ [0] console::log("Final balance:", 79228162516764337593543950835 [7.922e28]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Extracted profit (wei):", 2500000000000000500 [2.5e18]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("SUCCESS: testLocalFracture extracted positive profit at 2^64 wei boundary") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+[PASS] testLocalFractureAt2Pow64() (gas: 1273)
+Traces:
+  [1273] LocalVaultTest::testLocalFractureAt2Pow64()
+    └─ ← [Stop]
+
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.34ms (1.89ms CPU time)
+
+Ran 1 test suite in 20.39ms (2.34ms CPU time): 2 tests passed, 0 failed, 0 skipped (2 total tests)

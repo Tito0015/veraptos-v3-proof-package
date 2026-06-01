@@ -1,0 +1,21 @@
+{
+  "schema_version": "2.0",
+  "phase": "dvd_calibration_truster",
+  "target_contract": "TrusterLenderPool",
+  "target_address": "0x0000000000000000000000000000000000000000",
+  "global_constants": {
+    "POOL_INITIAL_TOKENS": 1000000000000000000000000,
+    "FLASH_AMOUNT": 1000000000000000000000000,
+    "PRICE": 1000000000000000000,
+    "router_denominator": 1000000000000000000000000
+  },
+  "energy_schemas": {
+    "DVD_Truster_FlashCallback": {
+      "type": "flash_loan_callback_skim",
+      "routing_flag": "HIGH_ENERGY_LEAK",
+      "description": "Flash loan callback interception — borrower must repay pool balance via target.functionCall(data)",
+      "observables": ["poolBalanceBefore", "poolBalanceAfter", "borrowAmount"],
+      "invariant": "token.balanceOf(pool) >= balanceBefore after flashLoan returns"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "2.0",
+  "phase": "dvd_calibration_selfie_lap2",
+  "target_contract": "SelfiePool",
+  "target_address": "0x0000000000000000000000000000000000000000",
+  "global_constants": {
+    "TOKEN_INITIAL_SUPPLY": 2000000000000000000000000,
+    "TOKENS_IN_POOL": 1500000000000000000000000,
+    "VOTING_THRESHOLD": 1000001000000000000000000,
+    "FLASH_AMOUNT": 1500000000000000000000000,
+    "FLASH_AMOUNT_INIT": 900000000000000000000000,
+    "PRICE": 1000000000000000000,
+    "router_denominator": 1000001000000000000000000,
+    "ACTION_COUNTER_BEFORE": 1,
+    "PLACEHOLDER_ACTION_COUNTER_BEFORE": 1,
+    "PLACEHOLDER_ACTION_COUNTER_AFTER": 1
+  },
+  "hamiltonian_terms": [
+    {
+      "id": "governance_vote_threshold_sensor",
+      "observable_bindings": {
+        "flash_loan_amount": { "latent_index": 0 },
+        "voting_threshold": { "latent_index": 1 }
+      },
+      "expression": "max(0, flash_loan_amount - voting_threshold)",
+      "weight": 1.0,
+      "wiring": "phase2"
+    }
+  ],
+  "energy_schemas": {
+    "DVD_Selfie_VoteThreshold": {
+      "type": "governance_vote_threshold",
+      "routing_flag": "GOVERNANCE_VOTE_THRESHOLD",
+      "description": "Flash loan volume must exceed 50%+1 voting power; energy = ReLU(flash_loan_amount - VOTING_THRESHOLD)",
+      "observables": ["flash_loan_amount", "voting_threshold"],
+      "invariant": "_hasEnoughVotes: balance > totalSupply/2 requires flash_loan_amount > VOTING_THRESHOLD"
+    },
+    "DVD_Selfie_GovernanceQueue": {
+      "type": "temporal_governance_hijack",
+      "routing_flag": "GOVERNANCE_QUEUE_HIJACK",
+      "description": "Legacy Lap1 sensor — queue delta only (decoupled from flash volume)",
+      "observables": ["actionCounter_before", "actionCounter_after"],
+      "invariant": "getActionCounter() increases only when queueAction succeeds with >50% voting power"
+    }
+  }
+}

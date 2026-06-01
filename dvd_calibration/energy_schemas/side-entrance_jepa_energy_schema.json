@@ -1,0 +1,41 @@
+{
+  "schema_version": "2.0",
+  "phase": "dvd_calibration_side_entrance",
+  "target_contract": "SideEntranceLenderPool",
+  "target_address": "0x0000000000000000000000000000000000000000",
+  "global_constants": {
+    "POOL_INITIAL_ETH": 1000000000000000000000,
+    "NATIVE_POOL_BALANCE": 1000000000000000000000,
+    "INTERNAL_BALANCE_BEFORE": 0,
+    "INTERNAL_BALANCE_AFTER_INIT": 0,
+    "FLASH_LOAN_AMOUNT": 1000000000000000000000,
+    "FLASH_AMOUNT_INIT": 500000000000000000000,
+    "PRICE": 1000000000000000000,
+    "router_denominator": 1000000000000000000,
+    "PLACEHOLDER_INTERNAL_BALANCE_BEFORE": 0,
+    "PLACEHOLDER_INTERNAL_BALANCE_AFTER": 0,
+    "PLACEHOLDER_NATIVE_POOL_BALANCE": 1000000000000000000000
+  },
+  "hamiltonian_terms": [
+    {
+      "id": "native_balance_desync_sensor",
+      "observable_bindings": {
+        "internal_balance_before": { "latent_index": 0 },
+        "internal_balance_after": { "latent_index": 1 },
+        "native_pool_balance": { "latent_index": 2 }
+      },
+      "expression": "max(0, internal_balance_after - internal_balance_before)",
+      "weight": 1.0,
+      "wiring": "phase2"
+    }
+  ],
+  "energy_schemas": {
+    "DVD_SideEntrance_NativeDesync": {
+      "type": "native_balance_accounting_desync",
+      "routing_flag": "NATIVE_BALANCE_DESYNC",
+      "description": "Flash loan volume vs pool native ETH; BPTT signed surplus flash_amount - POOL_INITIAL_ETH, router ReLU for score",
+      "observables": ["internal_balance_before", "internal_balance_after", "native_pool_balance"],
+      "invariant": "balances[user] must not increase unless msg.value accompanies deposit(); flashLoan callback must not credit ledger without capital"
+    }
+  }
+}

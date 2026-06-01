@@ -1,0 +1,58 @@
+UFarm Gradient Convergence - Empirical Audit
+============================================================
+=== Straight-Through Estimator Validation ===
+Shares mapped: 1000.500000
+Actual balance: 1000.000000
+Integer diff: 0
+STE output: 0.000000
+Gradient on shares_mapped: 2.000000
+SUCCESS: STE gradient flow validated
+
+=== Sigmoid Continuous Relaxation Demo ===
+Temperature annealing schedule:
+Step 0: T=1.000, P_valid=0.3920, Blend_weight=0.3920
+Step 1: T=0.950, P_valid=0.3865, Blend_weight=0.3865
+Step 2: T=0.902, P_valid=0.3808, Blend_weight=0.3808
+Step 3: T=0.857, P_valid=0.3748, Blend_weight=0.3748
+Step 4: T=0.815, P_valid=0.3685, Blend_weight=0.3685
+Gradient magnitude on z: 7.825462
+SUCCESS: Sigmoid relaxation gradient flow validated
+
+=== PyTorch Optimization - Profit Maximization ===
+Epoch | Amount (wei) | Profit (wei) | Gradient
+------------------------------------------------------------
+    0 | 505025083542081241088 | 2500000000000000000.00 | -2499999999999938048.000000
+    1 | 510101935835218116608 | 2525125417710387200.00 | -2525125417710408704.000000
+    2 | 515231952265637658624 | 2550509679176056832.00 | -2550509679176206336.000000
+    3 | 520416564204158058496 | 2576159761328111616.00 | -2576159761328247808.000000
+    4 | 525657238179867066368 | 2602082821020778496.00 | -2602082821020677120.000000
+   10 | 558364929804758089728 | 2763776113319018496.00 | -2763776113318950912.000000
+   20 | 618453224555618107392 | 3060451940061937664.00 | -3060451940062051328.000000
+   30 | 687132709920703119360 | 3399098958122188800.00 | -3399098958122228736.000000
+   40 | 766540087114470129664 | 3790242963479724032.00 | -3790242963479700992.000000
+   50 | 859184157597779230720 | 4246213447619706880.00 | -4246213447619637248.000000
+   60 | 968093114259942277120 | 4781851139285843968.00 | -4781851139285725184.000000
+   70 | 1097011212214593388544 | 5415468491106287616.00 | -5415468491106097152.000000
+   80 | 1250644371045818302464 | 6170050594900541440.00 | -6170050594900546560.000000
+   90 | 1434971389254297976832 | 7074772965726355456.00 | -7074772965726205952.000000
+
+Final Results:
+Optimized amount: 1633394114853166383104 wei
+Final profit: 8048042167856267264.00 wei
+Profit > 0: True
+
+Boundary Analysis:
+2^64 wei coordinate: 1.8446744073709552e+19
+Distance to 2^64: 1614947370779456831488 wei
+Relative distance: 87.546472
+SUCCESS: Gradient descent found profitable boundary
+
+============================================================
+EMPIRICAL AUDIT SUMMARY
+============================================================
+✅ STE gradient flow: VALIDATED
+✅ Sigmoid relaxation: VALIDATED
+✅ Profit extraction: VALIDATED
+✅ Final profit: 8048042167856267264.00 wei (> 0)
+✅ Optimized amount: 1633394114853166383104 wei
+📊 Distance to 2^64: 1614947370779456831488 wei

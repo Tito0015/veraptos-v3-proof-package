@@ -1,0 +1,62 @@
+{
+  "archive_id": "campaign_veraptos_v3_empirical_audit_ufarm_2pow64_2026-05-22",
+  "created_utc": "2026-05-22",
+  "project": "Veraptos V3.0",
+  "scope": "JEPA-EVM optimization empirical audit — UFarm local fracture / 2^64 wei",
+  "audit_points": [
+    "math_trace_sigmoid_relaxation_and_ste",
+    "convergence_proof_bptt_adam",
+    "ground_truth_2pow64_wei_and_positive_profit"
+  ],
+  "numerical_ground_truth": {
+    "two_pow_64_wei_decimal": "18446744073709551616",
+    "two_pow_64_wei_hex": "0x10000000000000000",
+    "foundry_profit_wei_testLocalFracture": "2500000000000000500",
+    "foundry_deposit_wei_halmos_sweep": "500000000000000100000"
+  },
+  "production_code_references": [
+    {
+      "file": "services/swarm-director/agents/jepa_evm/nodes.py",
+      "lines": "951-957",
+      "claim": "sigmoid revert relaxation"
+    },
+    {
+      "file": "services/swarm-director/agents/jepa_evm/nodes.py",
+      "lines": "658-663",
+      "claim": "vault STE"
+    },
+    {
+      "file": "services/swarm-director/agents/jepa_evm/nodes.py",
+      "lines": "939-978",
+      "claim": "BPTT Adam loop"
+    }
+  ],
+  "files": {
+    "documents": [
+      "documents/VERAPTOS_EMPIRICAL_AUDIT_PROOF.md",
+      "documents/REPRODUCTION.md"
+    ],
+    "execution_logs": [
+      "execution_logs/pytest.log",
+      "execution_logs/forge_testLocalFracture.log",
+      "execution_logs/forge_test2Power64.log",
+      "execution_logs/forge_LocalVaultTest_full.log",
+      "execution_logs/gradient_convergence.log"
+    ],
+    "foundry_sandbox": [
+      "foundry_sandbox/LocalVaultTest.t.sol",
+      "foundry_sandbox/foundry.toml"
+    ],
+    "source_snapshots": [
+      "source_snapshots/test_ufarm_gradient_convergence.py",
+      "source_snapshots/run_empirical_audit.sh"
+    ],
+    "pytest_integration": [
+      "pytest_integration/test_ufarm_empirical_audit.py"
+    ],
+    "evidence": [
+      "evidence/halmos_2pow64_bytecode_evidence.json",
+      "evidence/README_EVIDENCE.txt"
+    ]
+  }
+}

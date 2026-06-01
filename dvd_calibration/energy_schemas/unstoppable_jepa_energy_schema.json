@@ -1,0 +1,25 @@
+{
+  "schema_version": "2.0",
+  "phase": "dvd_calibration_unstoppable",
+  "target_contract": "UnstoppableVault",
+  "target_address": "0x0000000000000000000000000000000000000000",
+  "global_constants": {
+    "VAULT_TOTAL_SUPPLY": 1000000000000000000000000,
+    "DESYNC_DELTA": 1000000000000000000,
+    "DESYNC_AMOUNT": 1,
+    "FLASH_AMOUNT": 100000000000000000000,
+    "VAULT_ADDRESS": "0x0000000000000000000000000000000000000001",
+    "TOKEN_ADDRESS": "0x0000000000000000000000000000000000000002",
+    "PRICE": 1000000000000000000,
+    "router_denominator": 1000000000000000000
+  },
+  "energy_schemas": {
+    "DVD_Unstoppable_Vault_Desync": {
+      "type": "abs_accounting_mismatch",
+      "routing_flag": "VAULT_ACCOUNTING_DESYNC",
+      "description": "ERC4626 convertToShares(totalSupply) must equal totalAssets(); direct transfer desyncs",
+      "observables": ["totalSupply", "totalAssets", "actualBalance"],
+      "invariant": "flashLoan_success == true — fracture when strict equality check reverts"
+    }
+  }
+}

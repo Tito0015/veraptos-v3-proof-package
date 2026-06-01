@@ -1,0 +1,44 @@
+No files changed, compilation skipped
+
+Ran 4 tests for test/LocalVaultTest.t.sol:LocalVaultTest
+[PASS] test2Power64Boundary() (gas: 6651)
+Logs:
+  === 2^64 Wei Boundary Verification ===
+  2^64 in decimal: 18446744073709551616
+  Expected decimal: 18446744073709551616
+  Hex representation: 0x10000000000000000
+  SUCCESS: 2^64 wei boundary constant validated
+
+[PASS] testFalseInvariantFails() (gas: 13095)
+Logs:
+  Executing arithmetic friction for amount: 500000000000000100000
+  Shares calculated: 500000000000000100000
+  New supply: 100500000000000000100000
+  Total capital after deposit: 100500000000000000100000
+  Oracle drift (+50 bps): 502500000000000000500
+  NAV after drift: 101002500000000000100500
+  Assets out: 502500000000000100500
+  PROFIT EXTRACTED: 2500000000000000500 wei
+
+[PASS] testLocalFracture() (gas: 18709)
+Logs:
+  === UFarm Local Fracture Test - 2^64 Wei Boundary ===
+  2^64 wei constant found in bytecode: 18446744073709551616
+  Test input (within bounds): 500000000000000100000
+  Initial balance: 79228162514264337593543950335
+  Executing arithmetic friction for amount: 500000000000000100000
+  Shares calculated: 500000000000000100000
+  New supply: 100500000000000000100000
+  Total capital after deposit: 100500000000000000100000
+  Oracle drift (+50 bps): 502500000000000000500
+  NAV after drift: 101002500000000000100500
+  Assets out: 502500000000000100500
+  PROFIT EXTRACTED: 2500000000000000500 wei
+  Final balance: 79228162516764337593543950835
+  Extracted profit (wei): 2500000000000000500
+  SUCCESS: testLocalFracture extracted positive profit at 2^64 wei boundary
+
+[PASS] testLocalFractureAt2Pow64() (gas: 1273)
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 559.40µs (513.90µs CPU time)
+
+Ran 1 test suite in 13.21ms (559.40µs CPU time): 4 tests passed, 0 failed, 0 skipped (4 total tests)
