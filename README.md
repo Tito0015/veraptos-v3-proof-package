@@ -1,4 +1,4 @@
-# Veraptos V3.0 — Paradigm Fellowship Evidence Package
+# Veraptos V3.0 — Evidence Package
 
 **Archive date:** 2026-06-01  
 **Campaign scope:** JEPA-EVM neuro-symbolic invariant search against **Damn Vulnerable DeFi (DVD)** calibration targets and **UFarm** arithmetic-friction analysis  
