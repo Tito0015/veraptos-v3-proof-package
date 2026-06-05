@@ -165,5 +165,3 @@ These logs prove **mathematical convergence on non-linear logic flaws** under st
 | UFarm empirical audit | `archives/campaign_veraptos_v3_empirical_audit_ufarm_2pow64_2026-05-22/` |
 | DVD calibrations | `targets/web3/calibration/{unstoppable,puppet-v2,side-entrance,selfie,truster}/` |
 | JEPA graph | `services/swarm-director/agents/jepa_evm/graph.py` |
-
-**Package generated:** passive file gather only — no network calls, no hunt execution, no forge compilation.
